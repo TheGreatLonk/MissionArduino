@@ -278,14 +278,13 @@ void loop() {
     digitalWrite(output[i], LOW);
   }
 
-  //order is:W,G,R,B,O,Y
-  // puzzle order: W,R,O,B,Y,G
+  //order is:G,R,B,O,Y
+  // puzzle order: R,O,B,Y,G
 
 
   //the most atrocious if statement chain known to mankind**************************************************************************************************************
 
   
-  if (State[0] == 0){
     if (State[2] == 0){
        if (State[4] == 0){
           if (State[3] == 0){
@@ -293,7 +292,7 @@ void loop() {
               if (State[1] == 0){
                 lcd.clear();
                 lcd.setCursor(0,0);
-                lcd.print("Next Code: 1234");
+                lcd.print("Next Code: 1234"); //pin for next puzzle (will be changed to actual pin once given)
                 blink(1000,800);
                 delay(9000);
                 lcd.clear();
@@ -311,10 +310,6 @@ void loop() {
      multiplier += .5; blink(1000,200);
   }
   }else if ((State[1] == 0) || (State[3] == 0) || (State[4] == 0) || (State[5] == 0)){
-     multiplier += .5; blink(1000,200);
-  }
-  }
-  else if ((State[1] == 0) || (State[2] == 0) || (State[3] == 0) || (State[4] == 0) || (State[5] == 0)){
      multiplier += .5; blink(1000,200);
   }
   
@@ -360,6 +355,9 @@ void loop() {
       lcd.clear();
   }
 
+
+
+
   //Button interface ****************************************************************************************************************************************************
 
   uint8_t buttons = lcd.readButtons();
@@ -375,18 +373,12 @@ void loop() {
       
       lcd.setCursor(0, 1);
       lcd.print("Fixing error");
-      Mword("WROBYG"); //White wire, Red wire, Oarnge wire, Blue wire, Yellow wire, Green wire.
+      Mword("ROBYG"); //Red wire, Oarnge wire, Black wire, Yellow wire, Green wire.
       lcd.clear();
       lcd.setCursor(0,0);
       lcd.print("Fixed error");
       delay(5000);
       lcd.clear();
-    }
-    if (buttons & BUTTON_UP){
-      multiplier += .1;
-    }
-    if (buttons & BUTTON_DOWN){
-      multiplier -= .1;
     }
   }
 
