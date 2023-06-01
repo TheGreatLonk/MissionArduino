@@ -292,7 +292,7 @@ void loop() {
               if (State[1] == 0){
                 lcd.clear();
                 lcd.setCursor(0,0);
-                lcd.print("Next Code: 1234"); //pin for next puzzle (will be changed to actual pin once given)
+                lcd.print("Next Code: 0112"); //pin for next puzzle
                 blink(1000,800);
                 delay(9000);
                 lcd.clear();
